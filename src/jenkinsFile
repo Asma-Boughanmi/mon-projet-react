@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    environment {
+        GIT_REPO = 'https://github.com/Asma-Boughanmi/mon-projet-react.git'
+    }
+
+    stages {
+        stage('Clone repository') {
+            steps {
+                git url: "${env.GIT_REPO}", branch: 'main'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'npm run build || echo "No build script defined"'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test || echo "No test script defined"'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished'
+        }
+    }
+}

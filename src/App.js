@@ -13,7 +13,7 @@ function App() {
   };
 
   const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));²
+    setTasks(tasks.filter((_, i) => i !== index));
   };
 
   const toggleComplete = (index) => {
