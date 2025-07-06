@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'  // image officielle avec npm déjà installé
+        }
+    }
 
     stages {
         stage('Cloner le dépôt') {
