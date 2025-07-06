@@ -1,23 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'  // image officielle avec npm déjà installé
-        }
-    }
-
+    agent any
     stages {
-        stage('Cloner le dépôt') {
+        stage('Clone') {
             steps {
                 git 'https://github.com/Asma-Boughanmi/mon-projet-react.git'
             }
         }
-
-        stage('Installer les dépendances') {
+        stage('Install dependencies') {
             steps {
                 sh 'npm install'
             }
         }
-
         stage('Build') {
             steps {
                 sh 'npm run build'
