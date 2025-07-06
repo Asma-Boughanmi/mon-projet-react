@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Asma-Boughanmi/mon-projet-react.git'
+                git branch: 'main', url: 'https://github.com/Asma-Boughanmi/mon-projet-react.git'
             }
         }
         stage('Install dependencies') {
